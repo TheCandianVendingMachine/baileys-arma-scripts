@@ -1,4 +1,5 @@
 #include "defusalDefines.hpp"
+
 class tcvm_nuke_defusal {
 	idd = DEFUSAL_IDD;
 	movingEnable = 1;

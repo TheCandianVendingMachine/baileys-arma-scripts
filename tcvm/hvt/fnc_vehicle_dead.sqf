@@ -1,5 +1,7 @@
 #include "script_component.hpp"
+
 params ["_vehicle"];
+
 switch (true) do {
     case (_vehicle isKindOf "Air"): {
         private _engineDamage = _vehicle getHitPointDamage "HitEngine";

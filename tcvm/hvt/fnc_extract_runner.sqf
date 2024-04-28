@@ -1,5 +1,8 @@
 #include "script_component.hpp"
+
+
 params ["_trigger"];
+
 private _allVehicles = list _trigger;
 _allVehicles = (_allVehicles select {
     [_x] call FUNC(vehicle_isVehicle)
@@ -7,6 +10,7 @@ _allVehicles = (_allVehicles select {
     private _validVehicles = _trigger getVariable QGVAR(extractVehicles);
     (_validVehicles isEqualTo []) || { _x in _validVehicles }
 };
+
 /*
     State Transitions
         Moving -> Loading:
@@ -65,6 +69,7 @@ _allVehicles = (_allVehicles select {
     };
     _x setVariable [QGVAR(extract_state), _state];
 } forEach _allVehicles;
+
 private _loadingVehicles = [];
 private _deadVehicles = [];
 {
@@ -80,6 +85,8 @@ private _deadVehicles = [];
         };
     };
 } forEach _allVehicles;
+
+// Give up alive civilians back to FSM
 private _controlledHVTs = _trigger getVariable QGVAR(controlledHVTs);
 {
     if (alive _x) then {
@@ -96,5 +103,6 @@ private _controlledHVTs = _trigger getVariable QGVAR(controlledHVTs);
     };
 } forEach _deadVehicles;
 _trigger setVariable [QGVAR(controlledHVTs), _controlledHVTs];
+
 [_trigger, _loadingVehicles] call FUNC(extract_stateTick);
 [_trigger, _loadingVehicles] call FUNC(extract_agentTick);

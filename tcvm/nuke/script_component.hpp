@@ -1,7 +1,9 @@
 #define COMPONENT nuke
 #include "../script_component.hpp"
 #include "defusalDefines.hpp"
+
 #define DEBUG_MODE_DRAW -1
+
 #define COLOUR_RED 		[[255, 000, 000], "#FF0000", "RED", 	DEFUSAL_RED_IDD]
 #define COLOUR_GREEN	[[000, 255, 000], "#00FF00", "GREEN", 	DEFUSAL_GREEN_IDD]
 #define COLOUR_BLUE		[[000, 000, 255], "#0000FF", "BLUE", 	DEFUSAL_BLUE_IDD]
@@ -9,6 +11,7 @@
 #define COLOUR_MAGENTA	[[255, 000, 255], "#FF00FF", "MAGENTA", DEFUSAL_MAGENTA_IDD]
 #define COLOUR_ORANGE	[[255, 077, 000], "#FF4D00", "ORANGE", 	DEFUSAL_ORANGE_IDD]
 #define COLOUR_GRAY		[[125, 125, 125], "#7D7D7D", "GRAY", 	DEFUSAL_GRAY_IDD]
+
 #define ALL_COLOURS [\
 	COLOUR_RED,\
 	COLOUR_GREEN,\
@@ -18,4 +21,7 @@
 	COLOUR_ORANGE,\
 	COLOUR_GRAY\
 ]
+
+// Success count has to be <= count of all colours
 #define DEFUSE_SUCCESS_COUNT 5
+

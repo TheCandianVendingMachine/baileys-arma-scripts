@@ -1,5 +1,7 @@
 #include "script_component.hpp"
+
 params ["_trigger"];
+
 private _allVehicles = list _trigger;
 _allVehicles = _allVehicles select { [_x] call FUNC(vehicle_isVehicle) };
 /*
@@ -44,6 +46,7 @@ _allVehicles = _allVehicles select { [_x] call FUNC(vehicle_isVehicle) };
     };
     _x setVariable [QGVAR(extract_state), _state];
 } forEach _allVehicles;
+
 private _unloadingVehicles = [];
 {
     private _state = _x getVariable QGVAR(extract_state);
@@ -57,6 +60,8 @@ private _unloadingVehicles = [];
         default {};
     };
 } forEach _allVehicles;
+
+// Move civilians out of aircraft and give up to FSM
 private _controlledHVTs = _trigger getVariable QGVAR(controlledHVTs);
 private _despawnPos = ASLToATL (_trigger getVariable QGVAR(despawnPosition));
 {
@@ -75,6 +80,7 @@ private _despawnPos = ASLToATL (_trigger getVariable QGVAR(despawnPosition));
         _x setVariable [QGVAR(assignedSeats), []];
     };
 } forEach _unloadingVehicles;
+
 private _hvtsToDelete = [];
 private _hvtsGot = _trigger getVariable QGVAR(hvtsGot);
 {
@@ -85,9 +91,11 @@ private _hvtsGot = _trigger getVariable QGVAR(hvtsGot);
         _hvtsGot = _hvtsGot + 1;
     };
 } forEach _controlledHVTs;
+
 _hvtsToDelete sort false;
 {
     _controlledHVTs deleteAt _x;
 } forEach _hvtsToDelete;
+
 _trigger setVariable [QGVAR(controlledHVTs), _controlledHVTs];
 _trigger setVariable [QGVAR(hvtsGot), _hvtsGot];
