@@ -3,7 +3,7 @@ private _compile = {
     if (fileExists _init) then {
         [] call compile preprocessFileLineNumbers _init;
     };
-}
+};
 
 ["tcvm\nuke\init.sqf"] call _compile;
 ["tcvm\hvt\init.sqf"] call _compile;
