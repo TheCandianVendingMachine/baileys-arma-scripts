@@ -1,4 +1,4 @@
-# How to use Nuke
+# Nuke
 
 In the root directories' `init.sqf`, you need to add the following:
 

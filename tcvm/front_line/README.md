@@ -1,4 +1,4 @@
-# How to use
+# Front Line
 
 Put down "empty" markers that will define the front line. Label these with variable names. In the `init.sqf` for the mission, put the following:
 
