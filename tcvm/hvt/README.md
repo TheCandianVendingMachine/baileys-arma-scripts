@@ -4,6 +4,9 @@ This script is quite involved. In order to use it, you must define HVT zones and
 The HVTs will not load into a vehicle until it is stopped within the spawn zone. If they start
 moving during loading, the HVTs will abort trying to get in and move to a wait position.
 
+HVT's will always enter the vehicle after spawning, 45 seconds later. This is a failure case,
+only occuring if the HVT has gotten stuck.
+
 ## HVT Spawn Zone
 
 An HVT zone is a trigger with at least one position defined within which the HVT's will spawn from.

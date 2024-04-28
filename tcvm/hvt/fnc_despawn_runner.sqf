@@ -66,7 +66,7 @@ private _controlledHVTs = _trigger getVariable QGVAR(controlledHVTs);
 private _despawnPos = ASLToATL (_trigger getVariable QGVAR(despawnPosition));
 {
     if (alive _x) then {
-        private _passengers = fullCrew [_x, "cargo", false];
+        private _passengers = fullCrew [_x, "", false];
         {
             _x params ["_unit"];
             if (alive _unit && { _unit getVariable [QGVAR(state), -1] == HVT_STATE_IN_VEHICLE }) then {

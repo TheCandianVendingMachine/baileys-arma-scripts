@@ -16,6 +16,8 @@ private _hvtsToRemove = [];
             Vehicle moving to has started moving or vehicle died
         Move To Vehicle -> Get In Vehicle:
             At load position
+        Move To Vehicle -> In Vehicle:
+            Enough time has passed that attempt has assumed to have failed
         Move To Vehicle -> Dead:
             Agent Dead
 
@@ -52,6 +54,7 @@ private _hvtsToRemove = [];
                     _x setVariable [QGVAR(cargoIndex), _cargoIndex];
                     _x setVariable [QGVAR(walkTowardHelicopter), false];
                     _x setVariable [QGVAR(walkTowardLastTime), 0];
+                    _x setVariable [QGVAR(walkTowardEnterTime), CBA_missionTime];
 
                     [_vehicleToLoadInto, _cargoIndex] call FUNC(vehicle_assignSeat);
 
@@ -92,6 +95,12 @@ private _hvtsToRemove = [];
 
                 if ((_vehicle getVariable QGVAR(extract_state)) in [VEHICLE_STATE_MOVING, VEHICLE_STATE_DEAD]) then {
                     _state = HVT_STATE_MOVE_TO_POSITION;
+                };
+
+                private _enterTime = _x getVariable QGVAR(walkTowardEnterTime);
+                if (CBA_missionTime - _enterTime >= HVT_GET_IN_FAIL_TIME) then {
+                    _state = HVT_STATE_GET_IN_VEHICLE;
+                    _x setVariable [QGVAR(getInTime), CBA_missionTime];
                 };
             };
             case HVT_STATE_GET_IN_VEHICLE: {
