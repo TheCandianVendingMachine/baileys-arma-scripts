@@ -8,7 +8,7 @@ private _paradrop = [format [QGVAR(paradrop_%1), _title regexReplace [" ", "_"]]
     
     for "_i" from 1 to _count do {
         [{
-            [QGVAR(spawnParadrop), _this] call CBA_fnc_serverEvent;
+            [QGVAR(spawnAIParadrop), _this] call CBA_fnc_serverEvent;
         }, [_side, _units, _plane, _ingress], (_i - 1) * 10] call CBA_fnc_waitAndExecute;
     }
 }, {true}, {}, _this] call ace_interact_menu_fnc_createAction;
