@@ -1,0 +1,13 @@
+onLoadName = "Invasion";
+#include "CfgLoadouts.hpp"
+#include "cfg\CfgEventHandlers.hpp"
+#include "cfg\Params.hpp"
+#include "cfg\ACE_Settings.hpp"
+respawnDelay = 5; 
+bwmfDate = "2021/07/21"; 
+class CfgDebriefingSections {
+  class acex_killTracker {
+    title = "ACEX Killed Events";
+    variable = "acex_killTracker_outputText";
+  };
+};
