@@ -6,6 +6,7 @@ _params params ["_items"];
 
 private _playerMoney = _player getVariable [QGVAR(money), 0];
 private _actions = [];
+systemChat str [_playerMoney];
 {
     _x params ["", "_title", "_cost", "", ["_condition", { true }]];
     if ((_player call _condition) && (_playerMoney - _cost) >= 0) then {

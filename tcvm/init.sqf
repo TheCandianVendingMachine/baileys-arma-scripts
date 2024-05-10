@@ -10,3 +10,4 @@ private _compile = {
 ["tcvm\front_line\init.sqf"] call _compile;
 ["tcvm\dynamic_paradrop\init.sqf"] call _compile;
 ["tcvm\dynamic_teleport\init.sqf"] call _compile;
+["tcvm\tcvm\init.sqf"] call _compile;

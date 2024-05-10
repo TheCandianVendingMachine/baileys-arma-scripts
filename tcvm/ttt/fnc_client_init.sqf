@@ -18,7 +18,7 @@ private _detectBody = [
     FUNC(body_detect), { params ["_target"]; !([_target] call FUNC(isAlive)) }, {}, [], [0, 0, 0], 100
 ] call ace_interact_menu_fnc_createAction;
 
-[ACE_PLAYER, 0, ["ACE_MainActions"], _detectBody] remoteExec ["ace_interact_menu_fnc_addActionToObject"];
+[QGVAR(addAction), [ACE_PLAYER, 0, ["ACE_MainActions"], _detectBody]] call CBA_fnc_globalEvent;
 
 
 ACE_PLAYER setVariable [QGVAR(initialized), true, true];

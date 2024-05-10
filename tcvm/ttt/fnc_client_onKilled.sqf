@@ -50,7 +50,7 @@ if !(isNull _instigator) then {
     hint format ["You were killed by %1, they were a %2", name _instigator, _instigatorFaction];
 } else {
     hint format ["You were killed by no one!", name _instigator, _instigatorFaction];
-}
+};
 
 private _killedWithText = [configFile >> "CfgWeapons" >> (currentWeapon _instigator) >> "displayName", "TEXT", "No Weapon"] call CBA_fnc_getConfigEntry;
 _unit setVariable [

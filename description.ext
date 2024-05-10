@@ -1,4 +1,8 @@
 #include "tcvm\nuke\DefusalUI.hpp"
 class CfgSounds {
   #include "tcvm\nuke\CfgSounds.hpp"
+  #include "tcvm\ttt\CfgSounds.hpp"
+};
+class Params {
+  #include "tcvm\ttt\CfgParams.hpp"
 };

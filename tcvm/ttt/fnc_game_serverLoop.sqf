@@ -7,7 +7,7 @@ private _allPlayers = allPlayers - entities "HeadlessClient_F";
 private _isTraitorAlive = false;
 private _isInnocentAlive = false;
 {
-    if !([_x] call FUNC(isAlive)) then { continue; }
+    if !([_x] call FUNC(isAlive)) then { continue; };
 
     if ([_x] call FUNC(isTraitor)) then {
         _isTraitorAlive = true;
@@ -19,12 +19,12 @@ private _isInnocentAlive = false;
     _distanceFromCenter params ["_distX", "_distY"];
 
     if (abs(_distX) > _zoneWidth || abs(_distY) > _zoneHeight) then {
-        [QGVAR(inform), ["Turn around now. You are exiting the allowed area. You will be killed if you proceed"], _x] call CBA_fnc_targetEvent;
+        [QGVAR(inform), "Turn around now. You are exiting the allowed area. You will be killed if you proceed", _x] call CBA_fnc_targetEvent;
         if (abs(_distX) > _zoneWidth + 50 || abs(_distY) > _zoneHeight + 50) then {
             if !(GVAR(debug)) then {
                 _x setDamage 1;
             } else {
-                [QGVAR(inform), ["You are dead"], _x] call CBA_fnc_targetEvent;
+                [QGVAR(inform), "You are dead", _x] call CBA_fnc_targetEvent;
             };
         };
     };
@@ -58,10 +58,10 @@ if (GVAR(timeHints) isNotEqualTo []) then {
         [QGVAR(inform), _hint] call CBA_fnc_globalEvent;
         GVAR(timeHints) deleteAt 0;
     };
-}
+};
 
 if (_timeLeft <= 0) exitWith {
     [_handle] call CBA_fnc_removePerFrameHandler;
-    [QGVAR(inform), ["Time limit exceeded, INNOCENT win"]] call CBA_fnc_globalEvent;
+    [QGVAR(inform), "Time limit exceeded, INNOCENT win"] call CBA_fnc_globalEvent;
     [{ [blufor] remoteExecCall ["potato_adminMenu_fnc_endMission", 0]; }, [], 5] call CBA_fnc_waitAndExecute;
 };

@@ -37,12 +37,6 @@ GVAR(traitorGroup) = createGroup west;
 GVAR(detectives) = [];
 GVAR(detectiveGroup) = createGroup west;
 
-GVAR(traitorStartMoney) = 0;
-GVAR(detectiveStartMoney) = 0;
-
-GVAR(traitorItems) = [];
-GVAR(detectiveItems) = [];
-
 GVAR(possibleGuns) = [
     // [gun, [magazine, maximum count]], probability
     ["CUP_arifle_M4A1", ["30Rnd_556x45_Stanag_Tracer_Red", 2]], 1 / 10,
@@ -69,7 +63,7 @@ GVAR(timeHints) = [
 ];
 
 [QGVAR(inform), {
-    hintSilent _this;
+    hint _this;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(alert), {
@@ -87,7 +81,7 @@ GVAR(timeHints) = [
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(addAction), {
-    _this call ace_interact_menu_fnc_createAction
+    _this call ace_interact_menu_fnc_addActionToObject;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(removeAction), {

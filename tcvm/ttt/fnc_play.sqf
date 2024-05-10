@@ -2,7 +2,7 @@
 
 [] call FUNC(init_items);
 
-GVAR(traitor_items) = [
+GVAR(traitorItems) = [
     "c4",
     "silence_pistol",
     "sniper",
@@ -14,7 +14,7 @@ GVAR(traitor_items) = [
     "thermite_grenade"
 ];
 
-GVAR(detective_items) = [
+GVAR(detectiveItems) = [
     "armour_l",
     "armour_h",
     "radar",
@@ -23,8 +23,8 @@ GVAR(detective_items) = [
     "health"
 ];
 
-[QGVAR(traitorBuyMenu), "Buy Item", "", {}, { true }, FUNC(action_buyItem), [GVAR(traitorItems)]] call ace_interact_menu_fnc_createAction;
-[QGVAR(detectiveBuyMenu), "Buy Item", "", {}, { true }, FUNC(action_buyItem), [GVAR(detectiveItems)]] call ace_interact_menu_fnc_createAction;
+GVAR(traitorBuyAceInteract) = [QGVAR(traitorBuyMenu), "Buy Item", "", {}, { true }, FUNC(action_buyItem), [GVAR(traitorItems)]] call ace_interact_menu_fnc_createAction;
+GVAR(detectiveBuyAceInteract) = [QGVAR(detectiveBuyMenu), "Buy Item", "", {}, { true }, FUNC(action_buyItem), [GVAR(detectiveItems)]] call ace_interact_menu_fnc_createAction;
 
 {
     private _array = _x;
@@ -36,7 +36,7 @@ GVAR(detective_items) = [
             if (_id isEqualTo _itemID) exitWith { _array set [_index, _x] };
         } forEach GVAR(items);
     } forEach _x;
-} forEach [GVAR(traitor_items), GVAR(detective_items)];
+} forEach [GVAR(traitorItems), GVAR(detectiveItems)];
 
 [{ [false] call potato_safeStart_fnc_toggleSafeStart }, [], 15] call CBA_fnc_waitAndExecute;
 [{

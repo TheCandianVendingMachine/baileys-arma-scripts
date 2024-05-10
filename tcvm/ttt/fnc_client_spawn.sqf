@@ -20,11 +20,11 @@ for "_j" from 1 to 50 do {
 
 private _spawn = selectRandom _bestPositions;
         
-switch (true) {
-    case ([ACE_PLAYER] call ttt_f_isTraitor): {
+switch (true) do {
+    case ([ACE_PLAYER] call FUNC(isTraitor)): {
         [] call FUNC(client_initTraitor);
     };
-    case ([ACE_PLAYER] call ttt_f_isDetective): {
+    case ([ACE_PLAYER] call FUNC(isDetective)): {
         [] call FUNC(client_initDetective);
     };
     default {

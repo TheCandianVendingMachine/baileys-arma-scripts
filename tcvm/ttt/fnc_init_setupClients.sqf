@@ -39,4 +39,4 @@ while { (count _playerList) > 0 } do {
     };
 };
 
-[QGVAR(client_init), [GVAR(traitors), GVAR(traitorGroup), GVAR(detectives), GVAR(detectiveGroup), GVAR(allRealPlayers)]] call CBA_fnc_globalEvent;
+[QGVAR(initClient), [GVAR(traitors), GVAR(traitorGroup), GVAR(detectives), GVAR(detectiveGroup), GVAR(allRealPlayers)]] call CBA_fnc_globalEvent;

@@ -20,7 +20,7 @@ _traitorCount = 1 / _traitorCount;
 _detectiveCount = 1 / _detectiveCount;
 
 GVAR(debug) = _debugMode isEqualTo 1;
-GVAR(timeLimit) = _timeLimit;
+GVAR(timeLimit) = _timeLimit * 60;
 GVAR(traitorCount) = _traitorCount;
 GVAR(traitorStartMoney) = _traitorStartingMoney;
 GVAR(detectiveCount) = _detectiveCount;
