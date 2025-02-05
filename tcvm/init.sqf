@@ -11,4 +11,5 @@ private _compile = {
 ["tcvm\dynamic_paradrop\init.sqf"] call _compile;
 ["tcvm\dynamic_teleport\init.sqf"] call _compile;
 ["tcvm\flag\init.sqf"] call _compile;
+["tcvm\strategic_placement\init.sqf"] call _compile;
 ["tcvm\tcvm\init.sqf"] call _compile;
