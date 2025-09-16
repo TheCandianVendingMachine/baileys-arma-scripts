@@ -7,6 +7,7 @@ PREP(isCrew);
 PREP(isHookedUp);
 PREP(isSafeToJump);
 PREP(lightStatus);
+PREP(createBriefing);
 
 [QGVAR(paradrop), {
     params ["_plane"];
@@ -21,11 +22,13 @@ PREP(lightStatus);
     private _sum = 0;
     {
         private _colour = _plane getVariable QGVAR(light);
-        if (_colour isNotEqualTo LIGHT_COLOUR_GO) exitWith {};
         _sum = _sum + (1 + random 0.5);
         [{
             params ["_unit", "_plane"];
-            _this call FUNC(ejectUnit);
+            private _colour = _plane getVariable QGVAR(light);
+            if (_colour isEqualTo LIGHT_GREEN_STR && { _unit in _plane }) then {
+                _this call FUNC(ejectUnit);
+            };
         }, [_x, _plane], _sum] call CBA_fnc_waitAndExecute;
     } forEach _hookedUnits;
 }] call CBA_fnc_addEventHandler;
@@ -64,6 +67,17 @@ PREP(lightStatus);
     };
 
     if (_colour isEqualTo LIGHT_GREEN_STR) then {
+        // Hook up AI, we always want to drop them
+        private _unitsHooked = _plane getVariable QGVAR(hookedTroops);
+        _unitsHooked pushBack _unit;
+        {
+            _x params ["_unit"];
+            if !(_unit call ace_common_fnc_isPlayer) then {
+                _unitsHooked pushBack _unit;
+            };
+        } forEach fullCrew [_plane, "cargo", false];
+        _plane setVariable [QGVAR(hookedTroops), _unitsHooked, true];
+
         [{
             [QGVAR(paradrop), _this] call CBA_fnc_localEvent;
         }, _plane, 1 + random 2] call CBA_fnc_waitAndExecute;
@@ -71,3 +85,4 @@ PREP(lightStatus);
 }] call CBA_fnc_addEventHandler;
 
 call FUNC(registerParadropAction);
+call FUNC(createBriefing);

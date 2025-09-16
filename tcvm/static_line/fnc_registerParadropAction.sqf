@@ -15,7 +15,7 @@
     private _hookup = [QGVAR(hookup), "Hook-up", "", {
         params ["_plane", "_player"];
         "Hooked-up" call ace_common_fnc_displayTextStructured;
-        [QGVAR(hookUp), [_plane, _player], _plane] call CBA_fnc_localEvent;
+        [QGVAR(hookUp), [_plane, _player], _plane] call CBA_fnc_targetEvent;
     }, {
         params ["_plane", "_player"];
         (_plane getVariable [QGVAR(enabled), false]) && {
@@ -28,7 +28,7 @@
     private _unhook = [QGVAR(unhook), "Unhook", "", {
         params ["_plane", "_player"];
         "Unhooked" call ace_common_fnc_displayTextStructured;
-        [QGVAR(unhook), [_plane, _player], _plane] call CBA_fnc_localEvent;
+        [QGVAR(unhook), [_plane, _player], _plane] call CBA_fnc_targetEvent;
     }, {
         params ["_plane", "_player"];
         (_plane getVariable [QGVAR(enabled), false]) && {
@@ -45,7 +45,7 @@
         params ["_plane"];
         private _off = [QGVAR(change_off), LIGHT_OFF_STR, ["", LIGHT_OFF_COLOUR], {
             params ["_plane", "_player"];
-            [QGVAR(changeLight), [_plane, LIGHT_OFF_STR], _plane] call CBA_fnc_localEvent;
+            [QGVAR(changeLight), [_plane, LIGHT_OFF_STR], _plane] call CBA_fnc_targetEvent;
         }, {
             params ["_plane"];
             (_plane getVariable QGVAR(light)) isNotEqualTo LIGHT_OFF_STR
@@ -53,7 +53,7 @@
 
         private _standby = [QGVAR(change_ready), LIGHT_RED_STR, ["", LIGHT_RED_COLOUR], {
             params ["_plane", "_player"];
-            [QGVAR(changeLight), [_plane, LIGHT_RED_STR], _plane] call CBA_fnc_localEvent;
+            [QGVAR(changeLight), [_plane, LIGHT_RED_STR], _plane] call CBA_fnc_targetEvent;
         }, {
             params ["_plane"];
             (_plane getVariable QGVAR(light)) isNotEqualTo LIGHT_RED_STR
@@ -61,7 +61,7 @@
 
         private _go = [QGVAR(change_go), LIGHT_GREEN_STR, ["", LIGHT_GREEN_COLOUR], {
             params ["_plane", "_player"];
-            [QGVAR(changeLight), [_plane, LIGHT_GREEN_STR], _plane] call CBA_fnc_localEvent;
+            [QGVAR(changeLight), [_plane, LIGHT_GREEN_STR], _plane] call CBA_fnc_targetEvent;
         }, {
             params ["_plane"];
             (_plane getVariable QGVAR(light)) isEqualTo LIGHT_RED_STR
